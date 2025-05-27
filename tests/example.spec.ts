@@ -16,3 +16,17 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('header sign in link functional test', async ({ page }) => {
+  await page.goto("https://practicesoftwaretesting.com/");
+
+  await page.locator('[data-test="nav-sign-in"]').click();
+  await expect(page).toHaveURL("https://practicesoftwaretesting.com/")
+})
+
+test('header sign in link visual test', async ({ page }) => {
+  await page.goto("https://practicesoftwaretesting.com/");
+
+  await page.locator('[data-test="nav-sign-in"]').click();
+  await expect(page).toHaveScreenshot('login page.png')
+})

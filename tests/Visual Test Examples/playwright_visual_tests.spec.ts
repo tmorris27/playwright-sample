@@ -1,12 +1,19 @@
 import { test, expect } from '@playwright/test';
 
-// visual test of login link
+// visual test of login page
 
 test('header sign in link visual test', async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/");
-
     await page.locator('[data-test="nav-sign-in"]').click();
     await expect(page).toHaveScreenshot('login page.png')
+})
+
+// Visual test of contact form page
+
+test('contact form visual test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    await page.locator('[data-test="nav-contact"]').click();
+    await expect(page).toHaveScreenshot("contact form.png");
 })
 
 // visual test of navigation dropdown menu

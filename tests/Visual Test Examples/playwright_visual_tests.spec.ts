@@ -25,3 +25,19 @@ test('header visual test', async ({ page }) => {
     const header = page.locator('.navbar navbar-expand-lg navbar-light bg-light');
     await expect(header).toHaveScreenshot('header.png');
 });
+
+// visual test of the footer element
+
+test('footer visual test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    const footer = page.locator(".container-fluid text-center bg-light p-5 mt-4");
+    await expect(footer).toHaveScreenshot('footer.png');
+})
+
+// Visual test of the product details page
+
+test('pdp visual test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    await page.locator('[data-test="product-01JWEK7ES2YERNJYS6WSHBJCPP"]').click();
+    await expect(page).toHaveScreenshot('PDP.png');
+})

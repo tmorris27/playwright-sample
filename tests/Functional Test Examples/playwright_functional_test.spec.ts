@@ -27,3 +27,57 @@ test('add to cart functional test', async ({ page }) => {
     await page.locator('[data-test="nav-cart"]').click();
     await expect(page.locator('[data-test="product-quantity"]')).toHaveValue('1');
 });
+
+// test of account login functionality
+
+test('account login functional test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    await page.locator('[data-test="nav-sign-in"]').click();
+    await page.locator('[data-test="email"]').click();
+    await page.locator('[data-test="email"]').fill('tristanjmorris27@gmail.com');
+    await page.locator('[data-test="password"]').click();
+    await page.locator('[data-test="password"]').fill('TEst1234#!');
+    await page.locator('[data-test="login-submit"]').click();
+    await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
+    await expect(page.locator('[data-test="page-title"]')).toContainText('My account');
+})
+
+// test of checkout functionality
+
+test('checkout functional test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    await page.locator('[data-test="product-01JWEK7ES4B0A8SHCBC1C2D2ZH"]').click();
+    await page.locator('[data-test="add-to-cart"]').click();
+    await page.locator('[data-test="nav-cart"]').click();
+    await page.locator('[data-test="proceed-1"]').click();
+    await page.locator('[data-test="email"]').click();
+    await page.locator('[data-test="email"]').fill('tristanjmorris27@gmail.com');
+    await page.locator('[data-test="password"]').click();
+    await page.locator('[data-test="password"]').fill('TEst1234#!');
+    await page.locator('[data-test="login-submit"]').click();
+    await page.locator('[data-test="proceed-2"]').click();
+    await page.locator('[data-test="proceed-3"]').click();
+    await page.locator('[data-test="payment-method"]').selectOption('cash-on-delivery');
+    await page.locator('[data-test="finish"]').click();
+    await page.locator('[data-test="finish"]').click();
+    await expect(page.locator('#order-confirmation')).toContainText('Thanks for your order!');
+})
+
+// test of contact form functionality
+
+test('contact form functional test', async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+    await page.locator('[data-test="nav-contact"]').click();
+    await expect(page).toHaveURL("https://practicesoftwaretesting.com/contact");
+    await page.locator('[data-test="first-name"]').click();
+    await page.locator('[data-test="first-name"]').fill('QA');
+    await page.locator('[data-test="last-name"]').dblclick();
+    await page.locator('[data-test="last-name"]').fill('Analyst');
+    await page.locator('[data-test="email"]').dblclick();
+    await page.locator('[data-test="email"]').fill('tristanjmorris27@gmail.com');
+    await page.locator('[data-test="subject"]').selectOption('status-of-order');
+    await page.locator('[data-test="message"]').click();
+    await page.locator('[data-test="message"]').fill('Test message is at least fifty characters or longer than that');
+    await page.locator('[data-test="contact-submit"]').click();
+    await expect(page.getByRole('alert')).toContainText('Thanks for your message! We will contact you shortly.');
+})

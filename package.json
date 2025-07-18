@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/tmorris27/playwright-sample#readme",
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.54.0",
     "@types/node": "^22.15.21"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.2.0"
   }
 }

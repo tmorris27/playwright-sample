@@ -21,7 +21,7 @@ test('categories nav menu functional test', async ({ page }) => {
 // test of add to cart functionality
 
 test('add to cart functional test', async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/");
+    await page.goto(`${process.env.URL}`);
     await page.locator('[data-test="product-01JWC7PDMY1YPD61153G9Q78TY"]').click();
     await page.locator('[data-test="add-to-cart"]').click();
     await page.locator('[data-test="nav-cart"]').click();
@@ -31,14 +31,14 @@ test('add to cart functional test', async ({ page }) => {
 // test of account login functionality
 
 test('account login functional test', async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/");
+    await page.goto(`${process.env.URL}`);
     await page.locator('[data-test="nav-sign-in"]').click();
     await page.locator('[data-test="email"]').click();
-    await page.locator('[data-test="email"]').fill('tristanjmorris27@gmail.com');
+    await page.locator('[data-test="email"]').fill(`${process.env.Username}`);
     await page.locator('[data-test="password"]').click();
-    await page.locator('[data-test="password"]').fill('TEst1234#!');
+    await page.locator('[data-test="password"]').fill(`${process.env.Password}`);
     await page.locator('[data-test="login-submit"]').click();
-    await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
+    await expect(page).toHaveURL(`${process.env.URL}account`);
     await expect(page.locator('[data-test="page-title"]')).toContainText('My account');
 })
 

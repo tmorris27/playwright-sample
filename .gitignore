@@ -5,4 +5,4 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-/ENV_files/.env/
+/ENV_files/.env/.pst

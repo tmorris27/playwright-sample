@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:pst":"cross-env test_env=pst npx playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tmorris27/playwright-sample.git"

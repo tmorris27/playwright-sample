@@ -1,4 +1,8 @@
 name: Playwright Tests
+
+env:
+  pst_password: ${{secrets.PST_PASSWORD}}
+  pst_username: ${{secrets.PST_USERNAME}}
 on:
   push:
     branches: [ main, master ]

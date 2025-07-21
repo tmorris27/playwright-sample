@@ -5,7 +5,7 @@ test('header sign in link functional test', async ({ page }) => {
     await page.goto(`${process.env.URL}`);
 
     await page.locator('[data-test="nav-sign-in"]').click();
-    await expect(page).toHaveURL("https://practicesoftwaretesting.com/auth/login")
+    await expect(page).toHaveURL(`${process.env.URL}auth/login`)
 })
 
 // test of the Categories navigation menu
@@ -22,7 +22,7 @@ test('categories nav menu functional test', async ({ page }) => {
 
 test('add to cart functional test', async ({ page }) => {
     await page.goto(`${process.env.URL}`);
-    await page.locator('[data-test="product-01JWC7PDMY1YPD61153G9Q78TY"]').click();
+    await page.locator('[data-test="product-01K0N4FZRFRYWYHW1763QM0KFR"]').click();
     await page.locator('[data-test="add-to-cart"]').click();
     await page.locator('[data-test="nav-cart"]').click();
     await expect(page.locator('[data-test="product-quantity"]')).toHaveValue('1');
@@ -34,10 +34,11 @@ test('account login functional test', async ({ page }) => {
     await page.goto(`${process.env.URL}`);
     await page.locator('[data-test="nav-sign-in"]').click();
     await page.locator('[data-test="email"]').click();
-    await page.locator('[data-test="email"]').fill(`${process.env.Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.pst_username}`);
     await page.locator('[data-test="password"]').click();
-    await page.locator('[data-test="password"]').fill(`${process.env.Password}`);
+    await page.locator('[data-test="password"]').fill(`${process.env.pst_password}`);
     await page.locator('[data-test="login-submit"]').click();
+    await (page).waitForTimeout(2000)
     await expect(page).toHaveURL(`${process.env.URL}account`);
     await expect(page.locator('[data-test="page-title"]')).toContainText('My account');
 })
@@ -46,14 +47,14 @@ test('account login functional test', async ({ page }) => {
 
 test('checkout functional test', async ({ page }) => {
     await page.goto(`${process.env.URL}`);
-    await page.locator('[data-test="product-01JWEK7ES4B0A8SHCBC1C2D2ZH"]').click();
+    await page.locator('[data-test="product-01K0N4FZRFRYWYHW1763QM0KFR"]').click();
     await page.locator('[data-test="add-to-cart"]').click();
     await page.locator('[data-test="nav-cart"]').click();
     await page.locator('[data-test="proceed-1"]').click();
     await page.locator('[data-test="email"]').click();
-    await page.locator('[data-test="email"]').fill(`${process.env.Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.pst_username}`);
     await page.locator('[data-test="password"]').click();
-    await page.locator('[data-test="password"]').fill(`${process.env.Password}`);
+    await page.locator('[data-test="password"]').fill(`${process.env.pst_password}`);
     await page.locator('[data-test="login-submit"]').click();
     await page.locator('[data-test="proceed-2"]').click();
     await page.locator('[data-test="proceed-3"]').click();
@@ -74,7 +75,7 @@ test('contact form functional test', async ({ page }) => {
     await page.locator('[data-test="last-name"]').dblclick();
     await page.locator('[data-test="last-name"]').fill(`${process.env.LastName}`);
     await page.locator('[data-test="email"]').dblclick();
-    await page.locator('[data-test="email"]').fill(`${process.env.Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.pst_username}`);
     await page.locator('[data-test="subject"]').selectOption('status-of-order');
     await page.locator('[data-test="message"]').click();
     await page.locator('[data-test="message"]').fill('Test message is at least fifty characters or longer than that');

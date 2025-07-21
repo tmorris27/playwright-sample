@@ -45,6 +45,6 @@ test('footer visual test', async ({ page }) => {
 
 test('pdp visual test', async ({ page }) => {
     await page.goto(`${process.env.URL}`);
-    await page.locator('[data-test="product-01JWEK7ES2YERNJYS6WSHBJCPP"]').click();
+    await page.locator('[data-test="product-01K0N4FZRFRYWYHW1763QM0KFR"]').click();
     await expect(page).toHaveScreenshot('PDP.png');
 })

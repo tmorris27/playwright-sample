@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:pst":"cross-env test_env=pst npx playwright test"
+    "test:pst": "cross-env ENV=PST npx playwright test --grep @PST",
+    "test:pst_functional": "cross-env ENV=PST npx playwright test --grep @functionalTests",
+    "test:pst_visual": "cross-env ENV=PST npx playwright test --grep @visualTests",
+    "test:UQA": "cross-env ENV=UQA npx playwright test --grep @UQA",
+    "test:Lighthouse_PST": "cross-env ENV=UQA npx playwright test --grep @lighthouse_PST",
+    "test:Lighthouse_UQA": "cross-env ENV=UQA npx playwright test --grep @lighthouse_UQA"
   },
   "repository": {
     "type": "git",
@@ -20,10 +25,14 @@
   "homepage": "https://github.com/tmorris27/playwright-sample#readme",
   "devDependencies": {
     "@playwright/test": "^1.54.0",
-    "@types/node": "^22.15.21"
+    "@types/node": "^22.15.21",
+    "lighthouse": "^12.8.2",
+    "playwright": "^1.57.0",
+    "playwright-lighthouse": "^4.0.0"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
-    "dotenv": "^17.2.0"
+    "dotenv": "^17.2.3",
+    "get-port": "^7.1.0"
   }
 }

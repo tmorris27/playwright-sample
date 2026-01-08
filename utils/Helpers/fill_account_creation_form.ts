@@ -1,0 +1,28 @@
+import {account_creation_data} from "./utils/Data/index.ts";
+import { Page, expect } from "@playwright/test";
+export async function fill_account_creation_form(page: Page, data: account_creation_data) {
+    await page.goto('https://practicesoftwaretesting.com/auth/register');
+    await page.locator('[data-test="first-name"]').click();
+    await page.locator('[data-test="first-name"]').fill(data.firstName);   
+    await page.locator('[data-test="last-name"]').click();
+    await page.locator('[data-test="last-name"]').fill(data.lastName);
+    await page.locator('[data-test="dob"]').click();
+    await page.locator('[data-test="dob"]').fill(data.dateOfBirth);
+    await page.locator('[data-test="street"]').click();
+    await page.locator('[data-test="street"]').fill(data.street);
+    await page.locator('[data-test="postal_code"]').click();
+    await page.locator('[data-test="postal_code"]').fill(data.postalCode);
+    await page.locator('[data-test="city"]').click();
+    await page.locator('[data-test="city"]').fill(data.city);
+    await page.locator('[data-test="state"]').click();
+    await page.locator('[data-test="state"]').fill(data.state);
+    await page.locator('[data-test="country"]').selectOption('US');
+    await page.locator('[data-test="phone"]').click();
+    await page.locator('[data-test="phone"]').fill(data.phoneNumber);
+    await page.locator('[data-test="email"]').click();
+    await page.locator('[data-test="email"]').fill(data.email);
+    await page.locator('[data-test="password"]').click();
+    await page.locator('[data-test="password"]').fill(data.password);
+    await page.locator('[data-test="register-submit"]').click();
+     await page.waitForLoadState("domcontentloaded" );
+};

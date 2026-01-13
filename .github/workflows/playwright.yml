@@ -17,8 +17,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
+    - name: Run Playwright PST tests
+      run: npx playwright test --grep @PST
+      env:
+        PST_Username: ${{ secrets.PST_Username }}
+        PST_Password: ${{ secrets.PST_Password }}
+        PST_Base_URL: ${{ vars.PST_Base_URL }}
+        FirstName: ${{vars.FirstName}}
+        LastName: ${{vars.LastName}}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

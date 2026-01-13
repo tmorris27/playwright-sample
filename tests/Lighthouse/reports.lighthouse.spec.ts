@@ -5,7 +5,7 @@ import lighthouseMobileConfig from 'lighthouse/core/config/lr-mobile-config.js';
 
 lighthouseTest.describe('Lighthouse Performance Audits', 
   { 
-    tag: ["@lighthouse_PST, @lighthouse_UQA"]
+    tag: ["@lighthouse_PST", "@lighthouse_UQA", "@PST", "@UQA"]
    }, 
    () => {
   lighthouseTest('Desktop Lighthouse Audit',

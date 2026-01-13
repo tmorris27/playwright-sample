@@ -17,6 +17,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
+    - name: Run Playwright UQA tests
+      run: npx playwright test --grep @UQA
+      env:
+        UQA_Base_URL: ${{ vars.UQA_Base_URL }}
+
     - name: Run Playwright PST tests
       run: npx playwright test --grep @PST
       env:

@@ -21,8 +21,7 @@ jobs:
     - name: Run Playwright UQA tests
       run: npx playwright test --grep @UQA
       env:
-        UQA_Base_URL: ${{ vars.UQA_Base_URL }}
-      
+        UQA_Base_URL: ${{ vars.UQA_Base_URL }}  
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

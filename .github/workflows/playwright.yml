@@ -29,7 +29,6 @@ jobs:
         path: playwright-report/
         retention-days: 30
 
-
     - name: Run Playwright PST tests
       run: npx playwright test --grep @PST
       env:

@@ -46,12 +46,15 @@ test('add to cart functional test',
      {
     tag: ['@PST', '@functionalTests' ],
 },
-    async ({ page }) => {
+    async ({ page, isMobile }) => {
     await page.goto("/");
-
-    await page.locator('[data-test="product-01KED0QCQJWKPYPVE1R1RSPRR7"]').click();
-    await page.locator('[data-test="add-to-cart"]').click();
-    await page.locator('[data-test="nav-cart"]').click();
+    await page.getByAltText('Combination Pliers').click();
+    await page.waitForLoadState('domcontentloaded');
+      await page.getByRole('button', {name: 'Add to cart '}).click();
+     if (isMobile){
+        await page.locator('.navbar-toggler-icon').click()   
+    } 
+    await page.getByRole('menuitem', {name:'cart'}).click();
     await expect(page.locator('[data-test="product-quantity"]')).toHaveValue('1');
 });
 
@@ -93,7 +96,7 @@ test('account login functional test',
     await page.locator('[data-test="password"]').click();
     await page.locator('[data-test="password"]').fill(`${process.env.PST_Password}`);
     await page.locator('[data-test="login-submit"]').click();
-    await (page).waitForTimeout(2000)
+     await page.waitForLoadState('domcontentloaded');
     await expect(page).toHaveURL('/account');
     await expect(page.locator('[data-test="page-title"]')).toContainText('My account');
 })
@@ -104,11 +107,15 @@ test('checkout functional test',
     {
     tag: ['@PST', '@functionalTests' ],
 },
-    async ({ page }) => {
+    async ({ page, isMobile }) => {
     await page.goto("/");
-     await page.locator('[data-test="product-01KED0QCQJWKPYPVE1R1RSPRR7"]').click();
-    await page.locator('[data-test="add-to-cart"]').click();
-    await page.locator('[data-test="nav-cart"]').click();
+    await page.getByAltText('Combination Pliers').click();
+    await page.waitForLoadState('domcontentloaded');
+    await page.getByRole('button', {name: 'Add to cart '}).click();
+     if (isMobile){
+        await page.locator('.navbar-toggler-icon').click()   
+    } 
+    await page.getByRole('menuitem', {name:'cart'}).click();
     await page.locator('[data-test="proceed-1"]').click();
     await page.locator('[data-test="email"]').click();
     await page.locator('[data-test="email"]').fill(`${process.env.PST_Username}`);
@@ -119,7 +126,9 @@ test('checkout functional test',
     await page.locator('[data-test="proceed-3"]').click();
     await page.locator('[data-test="payment-method"]').selectOption('cash-on-delivery');
     await page.locator('[data-test="finish"]').click();
-    await page.locator('[data-test="finish"]').click();
+    await expect (page.locator('[data-test="payment-success-message"]')).toContainText('Payment was successful')
+     await page.locator('[data-test="finish"]').click();
+    await page.waitForLoadState('domcontentloaded');
     await expect(page.locator('#order-confirmation')).toContainText('Thanks for your order!');
 })
 

@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
  import dotenv from 'dotenv';
  import path from 'path';
  
- dotenv.config({ path: "./utils/env/.env.test" });
+ dotenv.config({ path: "./utils/env/.env" });
 
 let baseUrl: string = process.env.BASE_URL || "";
 let environment = process.env.ENV || "default";

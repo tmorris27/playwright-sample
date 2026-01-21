@@ -12,10 +12,10 @@ let password: string = "";
 if (!baseUrl) {
   switch (environment) {
     case "PST":
-      baseUrl = process.env.PST_Base_URL || "";
+      baseUrl = process.env.PST_BASE_URL || "";
       break;
     case "UQA":
-      baseUrl = process.env.UQA_Base_URL || "";
+      baseUrl = process.env.UQA_BASE_URL || "";
      break;
      default:
       baseUrl = process.env.PROD_BASE_URL || "";

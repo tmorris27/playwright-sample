@@ -1,47 +1,81 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+
 jobs:
-  test:
-    timeout-minutes: 60
+  uqa-tests:
+    name: Playwright UQA Tests
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Run Playwright UQA tests
-      run: npx playwright test --grep @UQA
-      env:
-        ENV: "UQA"
-        UQA_Base_URL: ${{ vars.UQA_Base_URL }}  
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: "./playwright-report"
-        retention-days: 30
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
 
-    - name: Run Playwright PST tests
-      run: npx playwright test --grep @PST
-      env:
-        ENV: "PST"
-        PST_Username: ${{ secrets.PST_Username }}
-        PST_Password: ${{ secrets.PST_Password }}
-        PST_Base_URL: ${{ vars.PST_Base_URL }}
-        FirstName: ${{vars.FirstName}}
-        LastName: ${{vars.LastName}}
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run UQA tests
+        run: npx playwright test --grep @UQA
+        env:
+          ENV: UQA
+          UQA_Base_URL: ${{ vars.UQA_Base_URL }}
+
+      - name: Upload UQA Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-uqa
+          path: playwright-report/
+          retention-days: 30
+
+  pst-tests:
+    name: Playwright PST Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run PST tests
+        run: npx playwright test --grep @PST
+        env:
+          ENV: PST
+          PST_Username: ${{ secrets.PST_Username }}
+          PST_Password: ${{ secrets.PST_Password }}
+          PST_Base_URL: ${{ vars.PST_Base_URL }}
+          FirstName: ${{ vars.FirstName }}
+          LastName: ${{ vars.LastName }}
+
+      - name: Upload PST Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-pst
+          path: playwright-report/
+          retention-days: 30
+

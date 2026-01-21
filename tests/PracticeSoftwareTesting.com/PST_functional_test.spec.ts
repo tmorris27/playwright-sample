@@ -92,9 +92,9 @@ test('account login functional test',
     await page.locator('[data-test="nav-sign-in"]').click();
     }
     await page.locator('[data-test="email"]').click();
-    await page.locator('[data-test="email"]').fill(`${process.env.PST_Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.PST_USERNAME}`);
     await page.locator('[data-test="password"]').click();
-    await page.locator('[data-test="password"]').fill(`${process.env.PST_Password}`);
+    await page.locator('[data-test="password"]').fill(`${process.env.PST_PASSWORD}`);
     await page.locator('[data-test="login-submit"]').click();
      await page.waitForLoadState('domcontentloaded');
     await expect(page).toHaveURL('/account');
@@ -118,9 +118,9 @@ test('checkout functional test',
     await page.getByRole('menuitem', {name:'cart'}).click();
     await page.locator('[data-test="proceed-1"]').click();
     await page.locator('[data-test="email"]').click();
-    await page.locator('[data-test="email"]').fill(`${process.env.PST_Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.PST_USERNAME}`);
     await page.locator('[data-test="password"]').click();
-    await page.locator('[data-test="password"]').fill(`${process.env.PST_Password}`);
+    await page.locator('[data-test="password"]').fill(`${process.env.PST_PASSWORD}`);
     await page.locator('[data-test="login-submit"]').click();
     await page.locator('[data-test="proceed-2"]').click();
     await page.locator('[data-test="proceed-3"]').click();
@@ -148,11 +148,11 @@ test('contact form functional test',
     }
     await expect(page).toHaveURL('/contact');
     await page.locator('[data-test="first-name"]').click();
-    await page.locator('[data-test="first-name"]').fill(`${process.env.FirstName}`);
+    await page.locator('[data-test="first-name"]').fill(`${process.env.FIRSTNAME}`);
     await page.locator('[data-test="last-name"]').dblclick();
-    await page.locator('[data-test="last-name"]').fill(`${process.env.LastName}`);
+    await page.locator('[data-test="last-name"]').fill(`${process.env.LASTNAME}`);
     await page.locator('[data-test="email"]').dblclick();
-    await page.locator('[data-test="email"]').fill(`${process.env.PST_Username}`);
+    await page.locator('[data-test="email"]').fill(`${process.env.PST_USERNAME}`);
     await page.locator('[data-test="subject"]').selectOption('status-of-order');
     await page.locator('[data-test="message"]').click();
     await page.locator('[data-test="message"]').fill('Test message is at least fifty characters or longer than that');

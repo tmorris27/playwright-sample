@@ -65,7 +65,7 @@ jobs:
         run: npx playwright test --grep @PST
         env:
           ENV: PST
-          PST_USERNAME: ${{ secrets.PST_PASSWORD}}
+          PST_USERNAME: ${{ secrets.PST_USERNAME}}
           PST_PASSWORD: ${{ secrets.PST_PASSWORD }}
           PST_BASE_URL: ${{ vars.PST_BASE_URL }}
           FIRSTNAME: ${{ vars.FIRSTNAME }}

@@ -31,7 +31,7 @@ jobs:
         run: npx playwright test --grep @UQA
         env:
           ENV: UQA
-          UQA_Base_URL: ${{ vars.UQA_BASE_URL }}
+          UQA_BASE_URL: ${{ vars.UQA_BASE_URL }}
 
       - name: Upload UQA Playwright report
         if: ${{ !cancelled() }}
@@ -67,7 +67,7 @@ jobs:
           ENV: PST
           PST_Username: ${{ secrets.PST_Username }}
           PST_Password: ${{ secrets.PST_Password }}
-          PST_Base_URL: ${{ vars.PST_BASE_URL }}
+          PST_BASE_URL: ${{ vars.PST_BASE_URL }}
           FirstName: ${{ vars.FirstName }}
           LastName: ${{ vars.LastName }}
 

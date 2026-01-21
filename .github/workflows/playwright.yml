@@ -21,7 +21,7 @@ jobs:
     - name: Run Playwright UQA tests
       run: npx playwright test --grep @UQA
       env:
-        UQA: true
+        ENV: "UQA"
         UQA_Base_URL: ${{ vars.UQA_Base_URL }}  
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
@@ -33,7 +33,7 @@ jobs:
     - name: Run Playwright PST tests
       run: npx playwright test --grep @PST
       env:
-        PST: true
+        ENV: "PST"
         PST_Username: ${{ secrets.PST_Username }}
         PST_Password: ${{ secrets.PST_Password }}
         PST_Base_URL: ${{ vars.PST_Base_URL }}

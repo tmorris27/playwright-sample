@@ -10,6 +10,7 @@ jobs:
   uqa-tests:
     name: Playwright UQA Tests
     runs-on: ubuntu-latest
+    environment: UQA
     timeout-minutes: 60
 
     steps:
@@ -44,6 +45,7 @@ jobs:
   pst-tests:
     name: Playwright PST Tests
     runs-on: ubuntu-latest
+    environment: PST
     timeout-minutes: 60
 
     steps:

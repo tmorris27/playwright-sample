@@ -16,7 +16,12 @@ if (!baseUrl) {
       break;
     case "UQA":
       baseUrl = process.env.UQA_BASE_URL || "";
-     break;
+      break;
+    case "BASIC_AUTH":
+      baseUrl = process.env.BASIC_AUTH_BASE_URL || "";
+      username = process.env.BASIC_AUTH_USERNAME || "";
+      password = process.env.BASIC_AUTH_PASSWORD || "";
+      break;
      default:
       baseUrl = process.env.PROD_BASE_URL || "";
       environment = "default";

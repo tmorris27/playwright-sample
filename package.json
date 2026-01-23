@@ -9,7 +9,8 @@
     "test:pst_visual": "cross-env ENV=PST npx playwright test --grep @visualTests",
     "test:UQA": "cross-env ENV=UQA npx playwright test --grep @UQA",
     "test:Lighthouse_PST": "cross-env ENV=UQA npx playwright test --grep @lighthouse_PST",
-    "test:Lighthouse_UQA": "cross-env ENV=UQA npx playwright test --grep @lighthouse_UQA"
+    "test:Lighthouse_UQA": "cross-env ENV=UQA npx playwright test --grep @lighthouse_UQA",
+    "test:BASIC_AUTH": "cross-env ENV=BASIC_AUTH npx playwright test --grep @BASIC_AUTH"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('search returns relevant results',
     {
-    tag: ['@UQA'],},
+    tag: ['@UQA', '@search'],},
     async ({page}) => {
     await page.goto("/");
     await page.getByRole('button', {name:"U"}).click();

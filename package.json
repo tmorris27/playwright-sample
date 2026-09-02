@@ -27,7 +27,7 @@
   "homepage": "https://github.com/tmorris27/playwright-sample#readme",
   "devDependencies": {
     "@playwright/test": "^1.54.0",
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.20.1",
     "lighthouse": "^12.8.2",
     "playwright": "^1.57.0",
     "playwright-lighthouse": "^4.0.0"

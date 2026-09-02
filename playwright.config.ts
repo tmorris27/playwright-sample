@@ -1,6 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
  import dotenv from 'dotenv';
- import path from 'path';
  
  dotenv.config({ path: "./utils/env/.env" });
 

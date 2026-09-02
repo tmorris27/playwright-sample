@@ -10,7 +10,8 @@
     "test:UQA": "cross-env ENV=UQA npx playwright test --grep @UQA",
     "test:Lighthouse_PST": "cross-env ENV=UQA npx playwright test --grep @lighthouse_PST",
     "test:Lighthouse_UQA": "cross-env ENV=UQA npx playwright test --grep @lighthouse_UQA",
-    "test:BASIC_AUTH": "cross-env ENV=BASIC_AUTH npx playwright test --grep @BASIC_AUTH"
+    "test:BASIC_AUTH": "cross-env ENV=BASIC_AUTH npx playwright test --grep @BASIC_AUTH",
+    "test:search": "cross-env ENV=UQA npx playwright test --grep @search"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
   "homepage": "https://github.com/tmorris27/playwright-sample#readme",
   "devDependencies": {
     "@playwright/test": "^1.54.0",
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.20.1",
     "lighthouse": "^12.8.2",
     "playwright": "^1.57.0",
     "playwright-lighthouse": "^4.0.0"
